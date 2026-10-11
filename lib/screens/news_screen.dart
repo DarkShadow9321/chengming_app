@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+
+import '../services/favorite_service.dart';
+import '../utils/app_config.dart';
+import '../widgets/website_view.dart';
+
+class NewsScreen extends StatelessWidget {
+  const NewsScreen({
+    super.key,
+    required this.favorites,
+    required this.active,
+    required this.onHistoryChanged,
+    required this.viewKey,
+  });
+  final FavoriteService favorites;
+  final bool active;
+  final ValueChanged<bool> onHistoryChanged;
+  final GlobalKey<WebsiteViewState> viewKey;
+  @override
+  Widget build(BuildContext context) => WebsiteView(
+    key: viewKey,
+    initialUrl: AppConfig.news,
+    title: '最新消息',
+    favorites: favorites,
+    active: active,
+    onHistoryChanged: onHistoryChanged,
+  );
+}
